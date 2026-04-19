@@ -752,7 +752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014400031439335232, guid: f11b7761cb9ec184fb021f1f35d0af65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.66
+      value: 24.82
       objectReference: {fileID: 0}
     - target: {fileID: 2014400031439335232, guid: f11b7761cb9ec184fb021f1f35d0af65, type: 3}
       propertyPath: m_LocalPosition.y
@@ -802,6 +802,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 4214998364650880068, guid: f11b7761cb9ec184fb021f1f35d0af65, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 190506290396593997, guid: f11b7761cb9ec184fb021f1f35d0af65, type: 3}
     m_RemovedGameObjects: []
@@ -821,7 +825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3399200277809821697, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35
+      value: 38.62
       objectReference: {fileID: 0}
     - target: {fileID: 3399200277809821697, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -870,6 +874,10 @@ PrefabInstance:
     - target: {fileID: 3909482042153148557, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
       propertyPath: m_Center.z
       value: 0.4096737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078472327651406212, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 8126309754306936855, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
       propertyPath: m_Name
@@ -1073,9 +1081,13 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4134667780708456733, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 5714885907454197809, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 9.72
       objectReference: {fileID: 0}
     - target: {fileID: 5714885907454197809, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
       propertyPath: m_LocalPosition.y
