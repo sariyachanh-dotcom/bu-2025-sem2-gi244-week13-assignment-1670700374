@@ -5,6 +5,8 @@ public class SpawnManager : MonoBehaviour
     public Transform spawnPoint;
     public GameObject obstaclePrefab;
 
+    [SerializeField] private ObstacleObjectPool pool;
+
     void Start()
     {
         InvokeRepeating(nameof(Spawn), 0, 2f);
@@ -12,7 +14,6 @@ public class SpawnManager : MonoBehaviour
 
     void Spawn()
     {
-        // 1.18 stop moving left when the game is over
         GameObject player = GameObject.Find("Player");
         bool isGameOver = player.GetComponent<PlayerController>().gameOver;
         if (isGameOver)
@@ -20,10 +21,22 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        Instantiate(
-            obstaclePrefab,
-            spawnPoint.position,
-            obstaclePrefab.transform.rotation
-        );
+      
+        if (pool != null)
+        {
+            int type = Random.Range(0, 3);
+
+            GameObject obj = pool.Acquire(type);
+            obj.transform.position = spawnPoint.position + new Vector3(type * 3f, 0, 0);
+            obj.transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            Instantiate(
+                obstaclePrefab,
+                spawnPoint.position,
+                obstaclePrefab.transform.rotation
+            );
+        }
     }
 }
