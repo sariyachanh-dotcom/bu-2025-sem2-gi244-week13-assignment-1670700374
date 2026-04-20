@@ -296,10 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea0de11d4fe47246812b5037d39d6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleObjectPool
-  obstacleBarrelPrefab: {fileID: 8872066452297259089, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
-  obstacleBarrierPrefab: {fileID: 2355380986918181383, guid: f11b7761cb9ec184fb021f1f35d0af65, type: 3}
-  obstacleStoneWallPrefab: {fileID: 8126309754306936855, guid: 6271f7fc54eabf347815d479fbe5c6f5, type: 3}
-  poolSize: 10
+  barrelPrefab: {fileID: 1830175766}
+  barrierPrefab: {fileID: 995217169}
+  stoneWallPrefab: {fileID: 7082515491188262749}
+  initialPoolSize: 10
 --- !u!4 &255484002
 Transform:
   m_ObjectHideFlags: 0
@@ -612,6 +612,11 @@ Transform:
 --- !u!4 &1190272277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5714885907454197809, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
+  m_PrefabInstance: {fileID: 9057399244489738227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830175766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8872066452297259089, guid: ea64f003a1d29fc4bac7b8e72247c4ad, type: 3}
   m_PrefabInstance: {fileID: 9057399244489738227}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2014335011

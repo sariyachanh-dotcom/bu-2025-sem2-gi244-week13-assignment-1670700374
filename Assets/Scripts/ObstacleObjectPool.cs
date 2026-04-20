@@ -1,91 +1,73 @@
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ObstacleObjectPool : MonoBehaviour
 {
-    public GameObject obstacleBarrelPrefab;
-    public GameObject obstacleBarrierPrefab;
-    public GameObject obstacleStoneWallPrefab;
-    public int poolSize = 10;
+    [SerializeField] private GameObject barrelPrefab;
+    [SerializeField] private GameObject barrierPrefab;
+    [SerializeField] private GameObject stoneWallPrefab;
 
-    private List<GameObject> obstacleBarrelPool;
-    private List<GameObject> obstacleBarrierPool;
-    private List<GameObject> obstacleStoneWallPool;
+    [SerializeField] private int initialPoolSize = 10;
 
-    void Awake()
+    private readonly List<GameObject> barrelPool = new();
+    private readonly List<GameObject> barrierPool = new();
+    private readonly List<GameObject> stoneWallPool = new();
+
+    void Start()
     {
-        obstacleBarrelPool = new List<GameObject>();
-        obstacleBarrierPool = new List<GameObject>();
-        obstacleStoneWallPool = new List<GameObject>();
-
-      
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < initialPoolSize; i++)
         {
-            CreateNew(obstacleBarrelPrefab, obstacleBarrelPool);
-            CreateNew(obstacleBarrierPrefab, obstacleBarrierPool);
-            CreateNew(obstacleStoneWallPrefab, obstacleStoneWallPool);
+            CreateNew(barrelPrefab, barrelPool);
+            CreateNew(barrierPrefab, barrierPool);
+            CreateNew(stoneWallPrefab, stoneWallPool);
         }
     }
 
-    
     void CreateNew(GameObject prefab, List<GameObject> pool)
     {
-        GameObject obj = Instantiate(prefab);
-        obj.SetActive(false);
-        pool.Add(obj);
+        var go = Instantiate(prefab);
+        go.SetActive(false);
+        pool.Add(go);
     }
 
-    public GameObject Acquire(int obstacleType)
+    public GameObject Acquire(int type)
     {
         List<GameObject> pool = null;
         GameObject prefab = null;
 
-        if (obstacleType == 0)
+        if (type == 0)
         {
-            pool = obstacleBarrelPool;
-            prefab = obstacleBarrelPrefab;
+            pool = barrelPool;
+            prefab = barrelPrefab;
         }
-        else if (obstacleType == 1)
+        else if (type == 1)
         {
-            pool = obstacleBarrierPool;
-            prefab = obstacleBarrierPrefab;
+            pool = barrierPool;
+            prefab = barrierPrefab;
         }
-        else if (obstacleType == 2)
+        else if (type == 2)
         {
-            pool = obstacleStoneWallPool;
-            prefab = obstacleStoneWallPrefab;
+            pool = stoneWallPool;
+            prefab = stoneWallPrefab;
         }
 
-        
         if (pool.Count == 0)
         {
             CreateNew(prefab, pool);
         }
 
-        if (pool == null)
-        {
-            Debug.LogError("Invalid obstacleType");
-            return null;
-        }
-
-        GameObject obj = pool[0];
+        var go = pool[0];
         pool.RemoveAt(0);
-        obj.SetActive(true);
-
-        return obj;
+        go.SetActive(true);
+        return go;
     }
 
-    public void Release(GameObject obstacle, int obstacleType)
+    public void Release(GameObject obj, int type)
     {
-        obstacle.SetActive(false);
+        obj.SetActive(false);
 
-        if (obstacleType == 0)
-            obstacleBarrelPool.Add(obstacle);
-        else if (obstacleType == 1)
-            obstacleBarrierPool.Add(obstacle);
-        else if (obstacleType == 2)
-            obstacleStoneWallPool.Add(obstacle);
+        if (type == 0) barrelPool.Add(obj);
+        else if (type == 1) barrierPool.Add(obj);
+        else if (type == 2) stoneWallPool.Add(obj);
     }
 }
